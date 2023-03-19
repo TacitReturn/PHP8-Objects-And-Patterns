@@ -2,8 +2,6 @@
 
 namespace App\Chapter3;
 
-use App\Chapter4\IChargable;
-use App\Chapter3\CdProduct;
 use App\Chapter4\PriceUtilities;
 use App\Chapter4\IdentityTrait;
 use App\Chapter4\UtilityService;
@@ -129,9 +127,7 @@ class ShopProduct
 
 	public function cdInfo(CdProduct $prod): int
 	{
-		$length = $prod->playLength;
-
-		return $length;
+        return $prod->getPlayLength();
 	}
 }
 
