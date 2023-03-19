@@ -21,7 +21,7 @@ class ShopProduct
 
 	private int|float $discount = 0;
 	private int $id = 0;
-	private int $taxRate = 20;
+	private static int $taxRate = 20;
 
 	public function __construct(
 		private string $title,
@@ -30,6 +30,11 @@ class ShopProduct
 		protected int|float $price
 	) {
 	}
+
+	public function getTaxRate(): float
+    {
+		return 1.0;
+    }
 
 	public function setID(int $id)
 	{
@@ -134,7 +139,7 @@ $p = new ShopProduct("Laptop", "Thinkpad", "Lenovo", 100.75);
 
 print $p->calculateTax(100) . "\n";
 
-$u = new UtilityService;
+$u = new UtilityService(5);
 
 print $u->calculateTax(100) . "\n";
 

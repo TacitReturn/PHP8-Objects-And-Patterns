@@ -9,4 +9,7 @@ trait PriceUtilities
     {
         return (self::$taxRate / 100) * $price;
     }
+
+    abstract public function getTaxRate(): float;
+
 }
