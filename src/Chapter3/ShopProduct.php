@@ -128,6 +128,7 @@ class ShopProduct
 	public function cdInfo(CdProduct $prod): int
 	{
         return $prod->getPlayLength();
+        // Connect to GitHub
 	}
 }
 
