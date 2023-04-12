@@ -4,6 +4,10 @@
     "\\src\\Chapter3",
     "\\src\\Chapter4"
   ],
+<<<<<<< HEAD
   "SelectedNode": "\\src",
+=======
+  "SelectedNode": "\\src\\Chapter4\\UtilityService.php",
+>>>>>>> 50cecdd20a10cb1882976201b04a3da3d386ecff
   "PreviewInSolutionExplorer": false
 }

@@ -2,16 +2,24 @@
 
 namespace App\Chapter3;
 
-use App\Chapter4\IChargable;
-use App\Chapter3\CdProduct;
+use App\Chapter4\PriceUtilities;
+use App\Chapter4\IdentityTrait;
+use App\Chapter4\UtilityService;
 
-class ShopProduct implements IChargable
+
+
+
+class ShopProduct
 {
+	use PriceUtilities;
+	use IdentityTrait;
+
 	public const AVAILABLE = 0;
 	public const OUT_OF_STOCK = 0;
 
 	private int|float $discount = 0;
 	private int $id = 0;
+	private static int $taxRate = 20;
 
 	public function __construct(
 		private string $title,
@@ -20,6 +28,11 @@ class ShopProduct implements IChargable
 		protected int|float $price
 	) {
 	}
+
+	public function getTaxRate(): float
+    {
+		return 1.0;
+    }
 
 	public function setID(int $id)
 	{
@@ -32,8 +45,6 @@ class ShopProduct implements IChargable
 		$result = $stmt->execute([$id]);
 
 		$row = $stmt->fetch();
-
-		// var_dump($row);
 
 		if (empty($row)) {
 			return null;
@@ -116,8 +127,18 @@ class ShopProduct implements IChargable
 
 	public function cdInfo(CdProduct $prod): int
 	{
-		$length = $prod->playLength;
-
-		return $length;
+        return $prod->getPlayLength();
+        // Connect to GitHub
+        // Use Token
 	}
 }
+
+$p = new ShopProduct("Laptop", "Thinkpad", "Lenovo", 100.75);
+
+print $p->calculateTax(100) . "\n";
+
+$u = new UtilityService(5);
+
+print $u->calculateTax(100) . "\n";
+
+print $u->generateId();

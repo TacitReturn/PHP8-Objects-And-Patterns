@@ -18,13 +18,14 @@ use App\Chapter4\StaticExample2;
 use App\Chapter4\XmlProductWriter;
 use App\Chapter3\ShopProductWriter;
 use App\Chapter4\TextProductWriter;
+use App\Chapter4\UtilityService;
 
 $newShopProduct = new ShopProduct("Laptop", "Thinkpad", "Lenovo", 100.75);
 
 
 
-$writer = new XmlProductWriter;
-// $writer = new TextProductWriter;
+// $writer = new XmlProductWriter;
+$writer = new TextProductWriter;
 
 
 $writer->addProduct($newShopProduct);
@@ -56,3 +57,8 @@ $writer->write();
 // $writer->addProduct($product);
 
 // $writer->write();
+
+
+$u = new UtilityService(100);
+
+print $u->calculateTax(5) . "\n";
