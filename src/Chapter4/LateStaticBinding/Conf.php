@@ -74,4 +74,5 @@ try {
     $conf = new Conf("/tmp/non_existent.xml");
 } catch (Exception $e) {
     print "There was a problem handling this request...";
+    // Git test..
 }
