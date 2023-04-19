@@ -19,7 +19,7 @@ class Conf
             throw new Exception("File {$file} doesn't exist.");
         }
 
-        print "This file is apparently writable: {$this->file}";
+        print "This file is apparently writable: {$this->file}" . PHP_EOL;
 
         $this->xml = simplexml_load_file($file);
     }
@@ -51,28 +51,20 @@ class Conf
     }
 }
 
-//try {
-//    $conf = new Conf("/tmp/no.xml");
-//} catch (Exception $e) {
-//    throw $e;
-//}
-//try {
-//    $conf = new Conf("./temp/conf01.xml/");
-//    $conf1 = new Conf("./temp/non_existent_xml");
-//    print "User: " . $conf->get("user");
-//    print "Host: " . $conf->get("host");
-//    $conf-set("pass", "newpass");
-//    $conf->write();
-//    $conf1->write();
-//} catch (Exception $e) {
-//    // Handle the error in some way
-//    // or
-//    throw new Exception("Conf error: " . $e->getMessage());
-//}
-
 try {
-    $conf = new Conf("/tmp/non_existent.xml");
+    $conf = new Conf("./test.xml");
+    print "User: " . $conf->get("user") . PHP_EOL;
+    print "Host: " . $conf->get("host") . PHP_EOL;
+    $conf->set("pass", "newpass");
+    $conf->write();
 } catch (Exception $e) {
-    print "There was a problem handling this request...";
-    // Git test..
+    // Handle the error in some way
+    // or
+    throw new Exception("Conf error: " . $e->getMessage());
 }
+
+//try {
+//    $conf = new Conf("/tmp/non_existent.xml");
+//} catch (Exception $e) {
+//    print "There was a problem handling this request...";
+//}
